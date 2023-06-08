@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+cdk.out
+
+# anything with venv in it
+*venv*
 # C extensions
 *.so
 
