@@ -45,7 +45,7 @@ jobs:
       run: |
         echo '#!/bin/bash' > /usr/local/bin/cdk_docker.sh
         echo 'if [[ $1 == "build" ]]; then' >> /usr/local/bin/cdk_docker.sh
-        echo '  command docker buildx "${@:1}" --cache-to type=gha --cache-from type=gha' >> /usr/local/bin/cdk_docker.sh
+        echo '  command docker buildx "${@:1}"' >> /usr/local/bin/cdk_docker.sh
         echo 'else' >> /usr/local/bin/cdk_docker.sh
         echo '  command docker "${@:1}"' >> /usr/local/bin/cdk_docker.sh
         echo 'fi' >> /usr/local/bin/cdk_docker.sh
