@@ -41,15 +41,11 @@ jobs:
         role-to-assume: ${{ vars.OIDC_ROLE_ARN }}
         role-session-name: test-cache-layers
 
-    - name: Create custom Docker command
+    - name: Copy custom Docker command
       run: |
-        echo '#!/bin/bash' > /usr/local/bin/cdk_docker.sh
-        echo 'if [[ $1 == "build" ]]; then' >> /usr/local/bin/cdk_docker.sh
-        echo '  command docker buildx "${@:1}"' >> /usr/local/bin/cdk_docker.sh
-        echo 'else' >> /usr/local/bin/cdk_docker.sh
-        echo '  command docker "${@:1}"' >> /usr/local/bin/cdk_docker.sh
-        echo 'fi' >> /usr/local/bin/cdk_docker.sh
+        cp .github/workflows/scripts/cdk_docker.sh /usr/local/bin/cdk_docker.sh
         chmod +x /usr/local/bin/cdk_docker.sh
+      
 
     - name: Set CDK_DOCKER environment variable
       run: echo "CDK_DOCKER=/usr/local/bin/cdk_docker.sh" >> $GITHUB_ENV
