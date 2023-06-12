@@ -50,6 +50,9 @@ jobs:
     - name: Set CDK_DOCKER environment variable
       run: echo "CDK_DOCKER=/usr/local/bin/cdk_docker.sh" >> $GITHUB_ENV
       
+    - name: Expose GitHub Runtime
+      uses: crazy-max/ghaction-github-runtime@v2
+      
     - name: Run CDK deploy
       run: |
         echo $CDK_DOCKER
