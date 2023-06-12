@@ -4,8 +4,8 @@
 if [[ $1 == "build" ]]; then
   # Use docker buildx for build commands
   # echo the command before running it
-  echo docker buildx "${@:1}"
-  command docker buildx "${@:1}"
+  echo docker buildx "${@:1}" --load
+  command docker buildx "${@:1}" --load
 else
   # Use docker for all other commands
   # echo the command before running it
