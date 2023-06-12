@@ -52,5 +52,6 @@ jobs:
       
     - name: Run CDK deploy
       run: |
+        echo $CDK_DOCKER
         npm install -g aws-cdk
         cdk deploy --all --require-approval never
